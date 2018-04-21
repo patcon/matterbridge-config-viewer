@@ -34,3 +34,8 @@ heroku create my-matterbridge-config-viewer
 heroku config:set CONFIG_URL=https://example.com/config-heroku-template.custom.toml
 git push heroku master
 ```
+
+## Notes
+
+* Auto-deploys `master` branch to our heroku app:
+  `matterbridge-heroku-viewer`
