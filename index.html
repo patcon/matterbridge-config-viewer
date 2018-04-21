@@ -1,0 +1,67 @@
+<html>
+<head>
+  <title>Matterbridge</title>
+  <script src="//unpkg.com/vue@2.5.13/dist/vue.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+  <style>
+    .channel {
+      color: grey;
+    }
+</style>
+</head>
+<body>
+  <a class="github-fork-ribbon" href="https://github.com/edgi-govdata-archiving/matterbridge-heroku" data-ribbon="Contribute on GitHub" title="Contribute on GitHub">Fork me on GitHub</a>
+  <div class="container" id="app">
+    <h1>Matterbridge Gateways</h1>
+    <p class="lead">
+      The following is a listing of chat bridges provided by this software.
+    </p>
+    <div class="alert alert-info" role="alert" v-if="!filter.isEmpty()">
+      Filtered by: <strong>{{ filter }}</strong>
+    </div>
+    <ul>
+      <li
+        v-for="gateway in gateways"
+        v-if="gateway.enable == true && gateway.inout && !(!filter.isEmpty() && gateway.name.indexOf(filter) < 0)">
+        {{ gateway.name }}
+        <ul>
+          <li v-for="bridge in gateway.inout">
+            <div v-if="bridge.account.indexOf('telegram') >= 0">
+              <i class="fab fa-telegram-plane"></i>
+              <strong>Group: </strong>
+              <span class="channel">{{ gateway.name }}</span>
+            </div>
+            <div v-else-if="bridge.account.indexOf('slack') >= 0">
+              <i class="fab fa-slack-hash"></i>
+              <strong>{{ bridge.account.split('.')[1] }}</strong>
+              <span class="channel">#{{ bridge.channel }}</span>
+            </div>
+            <div v-else-if="bridge.account.indexOf('irc') >= 0">
+              <i class="far fa-comments"></i>
+              <strong>{{ bridge.account.split('.')[1] }}</strong>
+              <span class="channel">{{ bridge.channel }}</span>
+            </div>
+            <div v-else>
+              <i class="fab fa-gitter"></i>
+              <strong>Room: </strong>
+              <span class="channel">{{ bridge.channel }}</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li
+        v-for="gateway in samechannelgateways"
+        v-if="gateway.enable == true">
+        {{ gateway.name }}
+      </li>
+    </ul>
+  </div>
+  <script src="build/bundle.js"></script>
+</body>
+</html>

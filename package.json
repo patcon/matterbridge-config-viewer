@@ -1,0 +1,21 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "``` npm install -g webpack npm install --save toml npx webpack js/app.js bundle.js python2 -m SimpleHTTPServer 3000 ```",
+  "main": "bundle.js",
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "toml": "^2.3.3"
+  },
+  "scripts": {
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
+    "start": "http-server -p $PORT",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
+  }
+}
