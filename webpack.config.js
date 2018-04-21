@@ -5,7 +5,7 @@ var exportPath = path.resolve(__dirname, './build');
 module.exports = {
   plugins: [
     new webpack.EnvironmentPlugin({
-      CONFIG_URL: 'https://raw.githubusercontent.com/edgi-govdata-archiving/matterbridge-heroku/edgi/config/config-heroku-template.toml'
+      CONFIG_URL: 'https://raw.githubusercontent.com/edgi-govdata-archiving/matterbridge-heroku/master/config/config-heroku-template.toml'
     })
   ],
   entry: './src/app.js',

@@ -10,7 +10,7 @@ npm install
 npm run-script heroku-postbuild
 
 # Optionally set the relative or absolute url of the Matterbridge config file.
-# Default: https://raw.githubusercontent.com/edgi-govdata-archiving/matterbridge-heroku/edgi/config/config-heroku-template.toml
+# Default: https://raw.githubusercontent.com/edgi-govdata-archiving/matterbridge-heroku/master/config/config-heroku-template.toml
 # export CONFIG_URL=/config-heroku-template.custom.toml
 # export CONFIG_URL=https://example.com/config-heroku-template.custom.toml
 
