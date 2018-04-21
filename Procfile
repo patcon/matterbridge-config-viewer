@@ -1,1 +1,1 @@
-web: cd config-viewer && npm start
+web: npm start
