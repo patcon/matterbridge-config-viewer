@@ -22,13 +22,11 @@ npm start
 
 ## Heroku Deploy
 
-Since this app is currently in a subdirectory, you'll need to use a
-custom buildpack for hosting it. (It lives in another app from the main
-Matterbridge app.)
-
-Custom Buildpack: [Select Subdir](https://github.com/Pagedraw/heroku-buildpack-select-subdir)
+**Requirements:**
+- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 
 ```
+cd path/to/matterbridge-config-viewer
 heroku create my-matterbridge-config-viewer
 # Set your config url. (Optional)
 heroku config:set CONFIG_URL=https://example.com/config-heroku-template.custom.toml
